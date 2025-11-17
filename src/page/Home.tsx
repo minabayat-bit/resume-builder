@@ -1,7 +1,7 @@
 import Features from "../components/Features";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import Login from "../components/Login";
+
 import Testimonials from "../components/Testimonials";
 
 export const Home = () => {
@@ -18,9 +18,6 @@ export const Home = () => {
       </section>
       <section>
         <Footer />
-      </section>
-      <section>
-        <Login />
       </section>
     </div>
   );
