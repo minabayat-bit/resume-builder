@@ -9,6 +9,7 @@ import { useNavigate } from "react-router";
 
 const Header = () => {
   const navigate = useNavigate();
+  const navigateSign = useNavigate();
   return (
     <div>
       <div className="w-full space-x-2 py-2.5  font-medium text-sm text-green-800 text-center bg-linear-to-r from-[#ABFF7E] to-[#FDFEFF]">
@@ -26,7 +27,10 @@ const Header = () => {
           <a href="">Contact</a>
         </div>
         <div className="flex gap-2">
-          <button className="bg-green-500 text-[18px] cursor-pointer hover:bg-green-700 text-white py-1.5 px-6 rounded-3xl">
+          <button
+            onClick={() => navigateSign("/Register")}
+            className="bg-green-500 text-[18px] cursor-pointer hover:bg-green-700 text-white py-1.5 px-6 rounded-3xl"
+          >
             Get started
           </button>
           <button
@@ -140,7 +144,10 @@ const Header = () => {
             AI-powered assistance.
           </p>
           <div className="flex flex-row gap-3 pt-8">
-            <button className="bg-green-500 cursor-pointer hover:bg-green-700 ring-offset-2 ring-1 ring-green-400 text-[18px] text-white py-3 px-10 rounded-3xl flex flex-row items-center ">
+            <button
+              onClick={() => navigateSign("/Register")}
+              className="bg-green-500 cursor-pointer hover:bg-green-700 ring-offset-2 ring-1 ring-green-400 text-[18px] text-white py-3 px-10 rounded-3xl flex flex-row items-center "
+            >
               Get started
               <svg
                 xmlns="http://www.w3.org/2000/svg"

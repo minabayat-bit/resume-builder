@@ -1,4 +1,3 @@
-import React from "react";
 import group from "../assets/img/group-image-1.png";
 
 const Features = () => {
