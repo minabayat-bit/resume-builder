@@ -1,8 +1,75 @@
+import { useMutation } from "@tanstack/react-query";
+import axios from "../api/axios";
+import { useForm } from "react-hook-form";
+import { useEffect } from "react";
+import { useNavigate } from "react-router";
+
+interface InputType {
+  email: string;
+  password: string;
+}
+
+interface ResponseType {
+  message: string;
+  token: string;
+  user: {
+    createdAt: string;
+    name: string;
+    email: string;
+    updatedAt: string;
+    __v: string;
+    _id: string;
+  };
+}
+
 const Login = () => {
+  const navigate = useNavigate();
+
+  const { register, handleSubmit } = useForm<InputType>({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+
+  useEffect(() => {
+    console.log(localStorage.getItem("token"));
+    if (localStorage.getItem("token") !== null) {
+      navigate("/app");
+    }
+  }, []);
+
+  const { mutate, isSuccess, data } = useMutation<
+    ResponseType,
+    Error,
+    InputType
+  >({
+    mutationFn: async (userData: InputType) => {
+      const { data } = await axios.post("/api/users/login", {
+        email: userData.email,
+        password: userData.password,
+      });
+
+      return data;
+    },
+  });
+
+  useEffect(() => {
+    if (isSuccess) {
+      localStorage.setItem("token", data.token);
+      navigate("/app");
+    }
+  }, [isSuccess]);
+
   return (
     <div>
       <div className="flex flex-col justify-center items-center bg-gray-50 h-screen">
-        <form className="flex flex-col bg-white py-10 px-8 justify-center items-center gap-6 border border-gray-300 rounded-xl">
+        <form
+          onSubmit={handleSubmit((data: InputType) => {
+            mutate(data);
+          })}
+          className="flex flex-col bg-white py-10 px-8 justify-center items-center gap-6 border border-gray-300 rounded-xl"
+        >
           <div className="flex flex-col justify-center items-center gap-3">
             <p className="text-gray-900 text-3xl font-medium">Login</p>
             <p className="text-gray-600 ">Please login to continue</p>
@@ -25,6 +92,7 @@ const Login = () => {
               <rect x="2" y="4" width="20" height="16" rx="2"></rect>
             </svg>
             <input
+              {...register("email", { required: true })}
               placeholder="Email id "
               className="border-none w-full outline-none "
               type="email"
@@ -48,6 +116,7 @@ const Login = () => {
               <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
             </svg>
             <input
+              {...register("password", { required: true })}
               placeholder="Password"
               className="border-none w-full outline-none p-6"
               type="password"
