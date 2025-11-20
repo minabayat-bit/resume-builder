@@ -1,26 +1,15 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router";
+import Dashbord from "../components/Dashbord";
 
 const Dashboard = () => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    console.log(localStorage.getItem("token"));
-    if (localStorage.getItem("token") === null) {
-      navigate("/login");
-    }
-  }, []);
+  
 
   return (
     <>
-      <button
-        onClick={() => {
-          localStorage.removeItem("token");
-        }}
-      >
-        Logout
-      </button>
-      <h1>Dashboard</h1>
+      <Dashbord />
+      
+      <h1></h1>
     </>
   );
 };

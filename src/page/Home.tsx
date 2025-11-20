@@ -1,3 +1,4 @@
+import Dashbord from "../components/Dashbord";
 import Features from "../components/Features";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -18,6 +19,9 @@ export const Home = () => {
       </section>
       <section>
         <Footer />
+      </section>
+      <section>
+        <Dashbord />
       </section>
     </div>
   );
