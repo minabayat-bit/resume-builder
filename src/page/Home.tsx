@@ -21,9 +21,7 @@ export const Home = () => {
       <section>
         <Footer />
       </section>
-      <section>
-        <Dashbord />
-      </section>
+      
     </div>
   );
 };

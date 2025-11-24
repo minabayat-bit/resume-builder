@@ -5,7 +5,13 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import Modal from "../components/Modal";
 
+import { useModalStore } from "../store/modalStore";
+
 const Dashbord = () => {
+
+   const { openModal } = useModalStore();
+
+
   // const navigate = useNavigate();
 
   //   useEffect(() => {
@@ -36,7 +42,7 @@ const Dashbord = () => {
 
       <div className="p-8 bg-gray-50 h-screen">
         <div className="flex gap-4 ">
-          <button className="w-full bg-white sm:max-w-36 h-48 flex flex-col items-center justify-center rounded-lg gap-2 text-slate-600 border border-dashed border-slate-300 group hover:border-indigo-500 hover:shadow-lg transition-all duration-300 cursor-pointer">
+          <button  onClick={openModal} className="w-full bg-white sm:max-w-36 h-48 flex flex-col items-center justify-center rounded-lg gap-2 text-slate-600 border border-dashed border-slate-300 group hover:border-indigo-500 hover:shadow-lg transition-all duration-300 cursor-pointer">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -68,7 +74,7 @@ const Dashbord = () => {
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
-              className="lucide lucide-cloud-upload size-11 transition-all duration-300 p-2.5 bg-gradient-to-br from-purple-300 to-purple-500  text-white rounded-full"
+              className="lucide lucide-cloud-upload size-11 transition-all duration-300 p-2.5 bg-linear-to-br from-purple-300 to-purple-500  text-white rounded-full"
               aria-hidden="true"
             >
               <path d="M12 13v8"></path>

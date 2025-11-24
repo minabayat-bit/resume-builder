@@ -1,9 +1,16 @@
-import type React from "react";
-
+import { useModalStore } from "../store/modalStore";
 
 const Modal = () => {
+
+    const { isOpen, closeModal } = useModalStore();
+
+  if (!isOpen) return null;
+
+
+
   return (
     <div>
+        <div className="fixed inset-0 flex items-center justify-center bg-black/30 z-50">
       <div className="relative bg-slate-50 border shadow-md rounded-lg w-full max-w-sm p-6">
         <h2 className="text-xl font-bold mb-4">Create a Resume</h2>
         <input
@@ -15,7 +22,7 @@ const Modal = () => {
         <button className="w-full py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors">
           Create Resume
         </button>
-        <button >
+        <button onClick={closeModal}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -33,6 +40,7 @@ const Modal = () => {
             <path d="m6 6 12 12"></path>
           </svg>
         </button>
+      </div>
       </div>
     </div>
   );
