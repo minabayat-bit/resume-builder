@@ -4,11 +4,15 @@ import "./index.css";
 
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
-import Home from "./page/Home";
+
 import Login from "./components/Login";
 import Register from "./components/Register";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import Dashboard from "./page/dashboard";
+
+
+
+import Dashboard from "./page/Dashboard";
+import Home from "./page/Home";
 
 const queryClient = new QueryClient();
 
