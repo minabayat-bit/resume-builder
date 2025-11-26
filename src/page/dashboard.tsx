@@ -1,25 +1,20 @@
 import { useEffect } from "react";
 import logo from "../assets/img/logo.svg";
 import { useNavigate } from "react-router";
-import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
 import Modal from "../components/Modal";
 
 import { useModalStore } from "../store/modalStore";
 
 const Dashbord = () => {
+  const { openModal } = useModalStore();
 
-   const { openModal } = useModalStore();
+  const navigate = useNavigate();
 
-
-  // const navigate = useNavigate();
-
-  //   useEffect(() => {
-  //     console.log(localStorage.getItem("token"));
-  //     if (localStorage.getItem("token") === null) {
-  //       navigate("/login");
-  //     }
-  //   }, []);
+  useEffect(() => {
+    if (localStorage.getItem("token") === null) {
+      navigate("/login");
+    }
+  }, []);
 
   return (
     <div>
@@ -33,6 +28,7 @@ const Dashbord = () => {
             className="border border-gray-200 rounded-4xl py-1 px-6 cursor-pointer"
             onClick={() => {
               localStorage.removeItem("token");
+              navigate("/login");
             }}
           >
             logout
@@ -42,7 +38,10 @@ const Dashbord = () => {
 
       <div className="p-8 bg-gray-50 h-screen">
         <div className="flex gap-4 ">
-          <button  onClick={openModal} className="w-full bg-white sm:max-w-36 h-48 flex flex-col items-center justify-center rounded-lg gap-2 text-slate-600 border border-dashed border-slate-300 group hover:border-indigo-500 hover:shadow-lg transition-all duration-300 cursor-pointer">
+          <button
+            onClick={openModal}
+            className="w-full bg-white sm:max-w-36 h-48 flex flex-col items-center justify-center rounded-lg gap-2 text-slate-600 border border-dashed border-slate-300 group hover:border-indigo-500 hover:shadow-lg transition-all duration-300 cursor-pointer"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"

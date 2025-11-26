@@ -1,10 +1,8 @@
-
 import Features from "../components/Features";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 
 import Testimonials from "../components/Testimonials";
-import Dashbord from "./Dashboard";
 
 export const Home = () => {
   return (
@@ -21,7 +19,6 @@ export const Home = () => {
       <section>
         <Footer />
       </section>
-      
     </div>
   );
 };
