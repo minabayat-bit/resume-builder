@@ -133,7 +133,7 @@ const Login = () => {
           </button>
           <p className="text-gray-500 text-[12px]">
             Don't have an account?
-            <span className="text-green-500 cursor-pointer">click here</span>
+            <span onClick={()=> navigate("/Register")} className="text-green-500 cursor-pointer">click here</span>
           </p>
         </form>
       </div>

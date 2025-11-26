@@ -160,7 +160,7 @@ const register = () => {
           </button>
           <p className="text-gray-500 text-[12px]">
             Already have an account?
-            <span className="text-green-500 cursor-pointer">click here</span>
+            <span onClick={()=> navigate("/Login")} className="text-green-500 cursor-pointer">click here</span>
           </p>
         </form>
       </div>
