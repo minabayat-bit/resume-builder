@@ -5,8 +5,11 @@ import axios from "../api/axios";
 interface Type {
   title: string;
 }
+interface ModalProps {
+    refetch: () => void;
+}
 
-const Modal = () => {
+const Modal = ({refetch}: ModalProps) => {
   const { isOpen, closeModal } = useModalStore();
   const [dtitle, dsettitle] = useState("");
   const token = localStorage.getItem("token");
@@ -23,6 +26,11 @@ const Modal = () => {
       );
 
       return data;
+    },
+     onSuccess: () => {
+      refetch();      
+      closeModal();    
+      dsettitle(""); 
     },
   });
 
