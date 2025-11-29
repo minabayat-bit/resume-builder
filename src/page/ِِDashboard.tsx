@@ -25,27 +25,22 @@ const Dashbord = () => {
   //       navigate("/login");
   //     }
   //   }, []);
+  const handleCreateResume = () => {
+    openModal();
+  };
 
   const token = localStorage.getItem("token");
 
-  const {
-    data: resumes,
-    
-    refetch,
-  } = useQuery({
+  const { data: resumes, refetch, } = useQuery({
     queryKey: ["resumes"],
     queryFn: async () => {
-      const { data } = await axios.get(
-        "/api/users/resumes", 
-        {
-          headers: {
-            Authorization: token,
-            
-          },
-        }
-      );
+      const { data } = await axios.get("/api/users/resumes", {
+        headers: {
+          Authorization: token,
+        },
+      });
 
-      return data.resumes; 
+      return data.resumes;
     },
     enabled: !!token,
   });
@@ -73,7 +68,7 @@ const Dashbord = () => {
         <div className="flex flex-col gap-4">
           <div className="flex flex-row gap-4 ">
             <button
-              onClick={openModal}
+              onClick={handleCreateResume}
               className="w-full bg-white sm:max-w-36 h-48 flex flex-col items-center justify-center rounded-lg gap-2 text-slate-600 border border-dashed border-slate-300 group hover:border-indigo-500 hover:shadow-lg transition-all duration-300 cursor-pointer"
             >
               <svg
