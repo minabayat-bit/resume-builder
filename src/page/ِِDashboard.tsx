@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import logo from "../assets/img/logo.svg";
 import { useNavigate } from "react-router";
-import axios from "axios";
+import axios from "../api/axios";
 import { useQuery } from "@tanstack/react-query";
 import Modal from "../components/Modal";
 
